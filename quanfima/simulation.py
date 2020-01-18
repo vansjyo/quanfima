@@ -1,3 +1,4 @@
+from __future__ import print_function
 import time
 import os
 import itertools
@@ -202,8 +203,8 @@ def simulate_fibers(volume_shape, n_fibers=1, radius_lim=(4, 10), length_lim=(0.
                     n_fails = n_fails + 1
 
                     if n_fails == max_fails:
-                        print "The number of fails exceeded. Generated {} fibers".\
-                                    format(n_generated)
+                        print("The number of fails exceeded. Generated {} fibers".\
+                                    format(n_generated))
 
                     continue
 
@@ -353,8 +354,8 @@ def simulate_particles(volume_shape, n_particles=1, radius_lim=(3, 30), max_fail
     n_fails = 0
     while n_generated < n_particles and n_fails < max_fails:
         if (n_generated % 100 == 0) or (n_generated == n_particles):
-            print 'n_generated = {}/{}, n_fails = {}/{}'.format(n_generated, n_particles,
-                                                                n_fails, max_fails)
+            print('n_generated = {}/{}, n_fails = {}/{}'.format(n_generated, n_particles,
+                                                                n_fails, max_fails))
 
         offset = [random_in(olim, number=1) for olim in offset_lim]
         offset = np.round(offset).astype(np.int32)
@@ -379,8 +380,8 @@ def simulate_particles(volume_shape, n_particles=1, radius_lim=(3, 30), max_fail
             n_fails = n_fails + 1
 
             if n_fails == max_fails:
-                print "The number of fails exceeded. Generated {} particles".\
-                            format(n_generated)
+                print("The number of fails exceeded. Generated {} particles".\
+                            format(n_generated))
 
             continue
 
@@ -614,7 +615,7 @@ def additive_noise(params, noise_lvl, smooth_lvl, use_median=True, median_rad=3)
 
         return data_seg
 
-    print '{}: Noise: {} | Smooth: {}'.format(name, noise_lvl, smooth_lvl)
+    print('{}: Noise: {} | Smooth: {}'.format(name, noise_lvl, smooth_lvl))
 
     data_ref = data.astype(np.float32)
     data_ref_skel = exposure.rescale_intensity(data_skel,
@@ -644,7 +645,7 @@ def additive_noise(params, noise_lvl, smooth_lvl, use_median=True, median_rad=3)
                                                             pos_label=1,
                                                             average='binary')
 
-    print 'Precision: {}, Recall: {}, F1-score: {}'.format(precision, recall, fbeta_score)
+    print('Precision: {}, Recall: {}, F1-score: {}'.format(precision, recall, fbeta_score))
 
     data_out = {'data': data_ref,
                 'data_noised': data_noised,

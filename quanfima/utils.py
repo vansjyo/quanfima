@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import operator
 import numpy as np
@@ -119,9 +120,9 @@ def calculate_tukey_posthoc(df, column, type_column='type', verbose=True, write=
         print(os.path.join(output_dir, name + '.txt'))
 
     if write:
-        print >> fout, 'Tukey post-hoc ({0})'.format(column)
-        print >> fout, tt
-        print >> fout, mc.groupsunique
+        print('Tukey post-hoc ({0})'.format(column), end="", file=fout)
+        print(tt, end="", file=fout)
+        print(mc.groupsunique, end="", file=fout)
 
     if verbose:
         print('Tukey post-hoc ({0})'%(column))
